@@ -1,0 +1,21 @@
+{
+    "code": 0,
+    "msg": "",
+    "data": [{
+        "title": "主页",
+        "icon": "layui-icon-home",
+        "jump": "/"
+    },{
+        "title":"图书库",
+        "icon": "layui-icon-read",
+        "jump": "userBook/search/"
+    },{
+        "title":"我的借阅",
+        "icon": "layui-icon-list",
+        "jump": "record/search/"
+    },{
+        "title":"基本资料",
+        "icon": "layui-icon-set",
+        "jump": "setting/userSetting/"
+    }]
+}

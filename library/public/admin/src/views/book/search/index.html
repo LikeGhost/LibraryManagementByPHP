@@ -1,0 +1,277 @@
+<title>查询图书</title>
+
+<div class="layui-card layadmin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb">
+        <a lay-href="">图书管理</a>
+        <a><cite>图书管理</cite></a>
+        <a><cite>查询图书</cite></a>
+    </div>
+</div>
+
+
+<div class="layui-fluid">
+    <div class="layui-card ">
+        <div class="layui-form layui-card-header layuiadmin-card-header-auto ">
+
+            <div class="layui-form-item">
+                <div class="layui-inline">
+
+                    <div style="width: 400px;" class="layui-input-block">
+                        <input type="text" name="keywords" required placeholder="请输入查询图书信息（如ISBN，书名，作者）"
+                            autocomplete="off" class="layui-input ">
+
+                    </div>
+
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-button-inline layui-btn  " lay-submit="" lay-filter="search">
+                        <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="layui-card-body ">
+            <table id="bookTable" lay-filter="bookTable"></table>
+            <script type="text/html" id="bookControl">
+                <a class="layui-btn layui-btn-xs" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>编辑</a>
+                <a class="layui-btn layui-btn-danger layui-btn-xs " lay-event="del"><i class="layui-icon layui-icon-delete"></i>删除</a>
+                <a class="layui-btn layui-btn-normal layui-btn-xs " lay-event="manage"> <i class="layui-icon layui-icon-addition"></i>增加库存</a>
+
+            </script>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script>
+    layui.use(['laydate', 'admin', 'form', 'table'], function () {
+        var $ = layui.$,
+            admin = layui.admin,
+            element = layui.element,
+            form = layui.form,
+            setter = layui.setter,
+            laydate = layui.laydate,
+            table = layui.table;
+
+
+        table.render({
+            id: 'bookTable',
+            elem: '#bookTable' //指定原始表格元素选择器（推荐id选择器）
+                ,
+            // height: 315 //容器高度
+            //     ,
+            // limit: 10,
+            cols: [
+                [{
+                        field: 'id',
+                        title: 'ID',
+                        hide: 'true'
+                    },
+                    {
+                        field: 'isbn',
+                        title: 'ISBN'
+                    },
+                    {
+                        field: 'name',
+                        title: '书名'
+                    },
+                    {
+                        field: 'author',
+                        title: '作者'
+                    },
+                    {
+                        field: 'price',
+                        title: '价格'
+                    },
+                    {
+                        field: 'publish_at',
+                        title: '出版时间',
+                        hide: 'true'
+                    },
+                    {
+                        field: 'publish_id',
+                        title: '出版社',
+                        hide: 'true'
+                    },
+                    {
+                        field: 'clc_id',
+                        title: '图书分类号',
+                        hide: 'true'
+                    },
+                    {
+                        field: 'information',
+                        title: '详情',
+                        hide: 'true'
+                    },
+                    {
+                        field: 'total',
+                        title: '库存',
+                        //hide: 'true'
+                    },
+                    {
+                        fixed: 'right',
+                        title: '操作',
+                        toolbar: '#bookControl',
+                        align: 'center',
+                        width:'250'
+                    }
+                ]
+            ],
+            toolbar: 'default',
+            url: '/api/book/search',
+            method: 'get',
+            where: '',
+            contentType: '',
+            headers: '',
+            title: '图书列表',
+            loading: true,
+            page: true,
+            limits: [10, 20, 30],
+            parseData: function (res) {
+                return {
+                    "count": res.data.total,
+                    "code": res.code,
+                    "data": res.data.data //解析数据列表
+                };
+            }
+        });
+
+
+
+        table.on('tool(bookTable)', function (obj) {
+            var data = obj.data,
+                layEvent = obj.event;
+
+
+            if (layEvent === 'edit') {
+                layer.open({
+                    type: 2,
+                    area: ['700px', '450px'],//admin.screen() < 2 ? ['100%', '80%'] : ['375px', '500px'],
+                    offset: 't',
+                    fixed: true,
+                    maxmin: true,
+                    btnAlign: 'c',
+                    title: '编辑图书',
+                    // content: layui.setter.base + 'views/iframe/layer/iframe.html'
+                    content: layui.setter.base + 'views/book/search/edit.html',
+                    success: function (layero, index) {
+                        var body = layer.getChildFrame('body', index);
+                        body.contents().find("#id").val(data.id);
+                        body.contents().find("#clc_now").val(data.clc_id);
+                        body.contents().find("#publish_now").val(data.publish_id);
+                        body.contents().find("#name").val(data.name);
+                        body.contents().find("#isbn").val(data.isbn);
+                        body.contents().find("#author").val(data.author);
+                        body.contents().find("#publish_at").val(data.publish_at);
+                        body.contents().find("#price").val(data.price);
+                        body.contents().find("#information").val(data.information);
+                        layer.iframeAuto(index)
+                    }
+                });
+            } else if (layEvent === 'del') {
+                layer.confirm('真的删除该图书么？', function (index) {
+                    $.ajax({
+                        url: "/api/book/delete",
+                        type: "get",
+                        dataType: "json",
+                        data: data,
+                        headers: {
+                            Authorization: layui.data('layuiAdmin').Authorization
+                        },
+                        success: function (res) {
+                            if (res.data.code == 201) {
+                                layer.msg("删除成功", {
+                                    icon: 1,
+                                    time: 1000
+                                });
+                                table.reload('bookTable')
+                            }
+                            else{
+                                layer.msg(res.msg, {
+                                    icon: 4,
+                                    time: 1000
+                                });
+                            }
+                        }
+                    })
+                    // layer.close(index);
+                    // var options = {
+                    //     method: 'get',
+                    //     where: data,
+                    //     // contentType: 'application/json'
+                    // }
+                    
+
+                });
+            } else if (layEvent === 'manage') {
+
+                layer.prompt({
+                    formType: 0,
+                    title: '请输入增加的库存量',
+                    area: ['800px', '350px'] //自定义文本域宽高
+                }, function (value, index, elem) {
+                    // 
+                    layer.close(index);
+                    // layer.msg('正在增加', {
+                    //     icon: 16
+                    // }, function () {
+                    //     // console.log(value);
+
+                    var data2 = {
+                        'id': data.id,
+                        'num': value
+                    };
+                    $.ajax({
+                        url: "/api/realBook/add",
+                        type: "get",
+                        dataType: "json",
+                        data: data2,
+                        headers: {
+                            Authorization: layui.data('layuiAdmin').Authorization
+                        },
+                        success: function (res) {
+                            if (res.data.code == 201) {
+                                layer.msg("增加成功", {
+                                    icon: 1,
+                                    time: 1000
+                                });
+                                table.reload('bookTable');
+                            } else {
+                                layer.msg("增加失败", {
+                                    icon: 4,
+                                    time: 1000
+                                });
+                            }
+                        }
+                    })
+
+                    // })
+
+                });
+            }
+        });
+
+
+        form.on('submit(search)', function (data) {
+
+            // console.log(data.field)
+            var options = {
+                method: 'get',
+                where: data.field,
+                // contentType: 'application/json'
+            }
+            table.reload('bookTable', options)
+
+            return false;
+        });
+        // form.render();
+    });
+
+</script>

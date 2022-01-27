@@ -1,0 +1,250 @@
+<title>管理图书库存</title>
+
+<div class="layui-card layadmin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb">
+        <a lay-href="">图书管理</a>
+        <a><cite>图书管理</cite></a>
+        <a><cite>管理图书库存</cite></a>
+    </div>
+</div>
+
+
+<div class="layui-fluid">
+    <div class="layui-card ">
+        <div class="layui-form layui-card-header layuiadmin-card-header-auto ">
+
+            <div class="layui-form-item">
+                <div class="layui-inline">
+
+                    <div style="width: 400px;" class="layui-input-block">
+                        <input type="text" name="keywords" required placeholder="请输入查询库存信息（如ISBN，书名，作者）"
+                            autocomplete="off" class="layui-input ">
+
+                    </div>
+
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-button-inline layui-btn  " lay-submit="" lay-filter="searchRealBook">
+                        <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="layui-card-body " >
+            <table id="realBookTable" lay-filter="realBookTable"></table>
+            <script type="text/html" id="realBookControl">
+
+                <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i class="layui-icon layui-icon-delete"></i>删除</a>
+
+            </script>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script>
+    layui.use(['laydate', 'admin', 'form', 'table', 'laytpl'], function () {
+        var $ = layui.$,
+            admin = layui.admin,
+            element = layui.element,
+            form = layui.form,
+            setter = layui.setter,
+            laydate = layui.laydate,
+            table = layui.table,
+            laytpl = layui.laytpl;
+
+
+        table.render({
+            id: 'realBookTable',
+            elem: '#realBookTable' //指定原始表格元素选择器（推荐id选择器）
+                ,
+            // height: 315 //容器高度
+            //     ,
+            // limit: 10,
+            cols: [
+                [{
+                        field: 'real_book_id',
+                        title: 'ID',
+                    },
+                    {
+                        field: 'book_id',
+                        title: 'book_id',
+                        hide: 'true'
+                    },
+                    {
+                        field: 'isbn',
+                        title: 'ISBN'
+                    },
+                    {
+                        field: 'name',
+                        title: '书名'
+                    },
+                    {
+                        field: 'author',
+                        title: '作者'
+                    },
+                    {
+                        field: 'status',
+                        title: '是否可借',
+
+                    },
+                    {
+                        field: 'put_time',
+                        title: '上架时间'
+                    },
+                    {
+                        field: 'library_name',
+                        title: '存放图书馆'
+
+                    },
+                    {
+                        field: 'price',
+                        title: '价格',
+                        hide: 'true'
+                    },
+                    {
+                        field: 'publish_at',
+                        title: '出版时间',
+                        hide: 'true'
+                    },
+                    {
+                        field: 'publish_id',
+                        title: '出版社',
+                        hide: 'true'
+                    },
+                    {
+                        field: 'clc_id',
+                        title: '图书分类号',
+                        hide: 'true'
+                    },
+                    {
+                        field: 'information',
+                        title: '详情',
+                        hide: 'true'
+                    },
+                    {
+                        field: 'total',
+                        title: '库存',
+                        hide: 'true'
+                    },
+                    {
+                        fixed: 'right',
+                        title: '操作',
+                        toolbar: '#realBookControl',
+                        align: 'center',
+                    }
+                ]
+            ],
+            toolbar: 'default',
+            url: '/api/realBook/search',
+            method: 'get',
+            where: '',
+            contentType: '',
+            headers: '',
+            title: '图书列表',
+            loading: true,
+            page: true,
+            limits: [10, 20, 30],
+            parseData: function (res) {
+                return {
+                    "code": res.code,
+                    "count": res.data.total,
+                    "data": res.data.data //解析数据列表
+                };
+            }
+        });
+
+
+        
+
+        table.on('tool(realBookTable)', function (obj) {
+            var data = obj.data,
+                layEvent = obj.event;
+
+
+            // if (layEvent === 'edit') {
+            //     layer.open({
+            //         type: 2,
+            //         area: ['700px', '450px'],
+            //         fixed: true,
+            //         maxmin: true,
+            //         btnAlign: 'c',
+            //         title: '编辑图书',
+            //         // content: layui.setter.base + 'views/iframe/layer/iframe.html'
+            //         content: layui.setter.base + 'views/book/search/edit.html',
+            //         success: function (layero, index) {
+            //             var body = layer.getChildFrame('body', index);
+            //             body.contents().find("#id").val(data.id);
+            //             body.contents().find("#clc_now").val(data.clc_id);
+            //             body.contents().find("#publish_now").val(data.publish_id);
+            //             body.contents().find("#name").val(data.name);
+            //             body.contents().find("#isbn").val(data.isbn);
+            //             body.contents().find("#author").val(data.author);
+            //             body.contents().find("#publish_at").val(data.publish_at);
+            //             body.contents().find("#price").val(data.price);
+            //             body.contents().find("#information").val(data.information);
+            //             layer.iframeAuto(index)
+            //         }
+            //     });
+            if (layEvent === 'del') {
+                layer.confirm('真的删除该实体图书么？', function (index) {
+                    $.ajax({
+                        url: "/api/realBook/delete",
+                        type: "get",
+                        dataType: "json",
+                        data: data,
+                        headers: {
+                            Authorization: layui.data('layuiAdmin').Authorization
+                        },
+                        success: function (res) {
+                            if (res.data.code == 201) {
+                                layer.msg("删除成功", {
+                                    icon: 1,
+                                    time: 1000
+                                });
+                                table.reload('realBookTable', options)
+                            }
+                            else {
+                                layer.msg(res.msg, {
+                                    icon: 2,
+                                    time: 1000
+                                });
+                            }
+                        }
+                    })
+                    layer.close(index);
+                    var options = {
+                        method: 'get',
+                        where: data,
+                        // contentType: 'application/json'
+                    }
+                    table.reload('bookTable', options)
+
+                });
+            }
+        });
+
+
+        form.on('submit(searchRealBook)', function (data) {
+
+            // console.log(data.field)
+            var options = {
+                method: 'get',
+                where: data.field,
+                // contentType: 'application/json'
+            }
+            table.reload('realBookTable', options)
+
+            return false;
+        });
+        // form.render();
+    });
+
+</script>

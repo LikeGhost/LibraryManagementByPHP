@@ -1,0 +1,274 @@
+<title>我的借阅</title>
+
+<div class="layui-card layadmin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb">
+        <a lay-href="">我的借阅</a>
+        <a><cite>我的借阅</cite></a>
+        <a><cite>我的借阅</cite></a>
+    </div>
+</div>
+
+
+<div class="layui-fluid">
+    <div class="layui-card ">
+        <!-- <div class="layui-form layui-card-header layuiadmin-card-header-auto ">
+
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+
+                        <div style="width: 400px;" class="layui-input-block">
+                            <input type="text" name="keywords" required placeholder="请输入查询库存信息（如ISBN，书名，作者）"
+                                autocomplete="off" class="layui-input ">
+
+                        </div>
+
+                    </div>
+                    <div class="layui-inline">
+                        <button class="layui-button-inline layui-btn  " lay-submit="" lay-filter="searchRealBook">
+                            <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+            </div> -->
+
+        <div class="layui-card-body ">
+            <table id="userRecordTable" lay-filter="userRecordTable"></table>
+            <script type="text/html" id="userRecordControl">
+                {{# if(d.status=='正在借阅'){ }}
+                <a class="layui-btn layui-btn layui-btn-xs" lay-event="returnBook"><i
+                        class="layui-icon layui-icon-release"></i>还书</a>
+                {{# }else if(d.status=='已结束'){}}
+                <a class="layui-btn layui-btn-disabled layui-btn-xs" disabled><i
+                        class="layui-icon layui-icon-release"></i>已还</a>
+                {{# }else if(d.status=='超期'){}}
+                <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="pay"><i
+                        class="layui-icon layui-icon-rmb"></i>缴纳罚款</a>
+                {{# } }}
+
+            </script>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+    layui.use(['laydate', 'form', 'table', 'laytpl'], function () {
+        var $ = layui.$,
+            element = layui.element,
+            form = layui.form,
+            setter = layui.setter,
+            laydate = layui.laydate,
+            table = layui.table,
+            laytpl = layui.laytpl;
+
+
+
+
+        // function RequestParameter() {
+        //     var url = window.location.search; //获取url中"?"符后的字串
+        //     var theRequest = new Object();
+        //     if (url.indexOf("?") != -1) {
+        //         var str = url.substr(1);
+        //         var strs = str.split("&");
+        //         for (var i = 0; i < strs.length; i++) {
+        //             theRequest[strs[i].split("=")[0]] = (strs[i].split("=")[1]);
+        //         }
+        //     }
+        //     return theRequest
+        // }
+        // var keywords = RequestParameter()['isbn'];
+
+        table.render({
+            id: 'userRecordTable',
+            elem: '#userRecordTable' //指定原始表格元素选择器（推荐id选择器）
+                ,
+            // height: 315 //容器高度
+            //     ,
+            // limit: 10,
+            cols: [
+                [{
+                        field: 'record_id',
+                        title: 'ID',
+                    },
+                    {
+                        field: 'book_id',
+                        title: 'book_id',
+                        hide: 'true'
+                    },
+                    {
+                        field: 'isbn',
+                        title: 'ISBN'
+                    },
+                    {
+                        field: 'name',
+                        title: '书名'
+                    },
+                    {
+                        field: 'author',
+                        title: '作者',
+                        hide: true
+                    },
+                    {
+                        field: 'status',
+                        title: '是否可借',
+                        hide: true
+                    },
+                    {
+                        field: 'put_time',
+                        title: '上架时间',
+                        hide: true
+                    }, {
+                        field: 'borrow_at',
+                        title: '借出时间',
+                        sort: true
+                    },
+                    {
+                        field: 'return_at',
+                        title: '应还时间/归还时间',
+                        sort: true
+                    }, {
+                        field: 'status',
+                        title: '借阅状态',
+                        sort: true
+                    },
+                    {
+                        field: 'library_name',
+                        title: '存放图书馆',
+                        hide: 'true'
+                    },
+                    {
+                        fixed: 'right',
+                        title: '操作',
+                        toolbar: '#userRecordControl',
+                        align: 'center',
+                    }
+                ]
+            ],
+            url: '/api/record/searchByUserId',
+            method: 'get',
+            where: {},
+            contentType: '',
+            headers: {
+                Authorization: layui.data('layuiAdmin').Authorization
+            },
+            title: '图书列表',
+            loading: true,
+            page: true,
+            limits: [10, 20, 30],
+            parseData: function (res) {
+                return {
+                    "code": res.code,
+                    "count": res.data.total,
+                    "data": res.data.data //解析数据列表
+                };
+            },
+            done: function () {
+                var index = parent.layer.getFrameIndex(window.name)
+                parent.layer.iframeAuto(index);
+
+                console.log('表格加载完毕')
+            },
+            skin: 'line'
+        });
+
+
+
+        table.on('tool(userRecordTable)', function (obj) {
+            var data = obj.data,
+                layEvent = obj.event;
+
+
+            if (layEvent === 'returnBook') {
+
+                $.ajax({
+                    url: "/api/record/return",
+                    type: "get",
+                    dataType: "json",
+                    data: data,
+                    headers: {
+                        Authorization: layui.data('layuiAdmin').Authorization
+                    },
+                    success: function (res) {
+                        if (res.data.code == 201) {
+                            layer.msg("还书成功", {
+                                icon: 1,
+                                time: 1000
+                            });
+                            table.reload('userRecordTable')
+                        }
+                    }
+                })
+
+
+            } else if (layEvent === 'pay') {
+
+                $.ajax({
+                    url: "/api/record/fine",
+                    type: "get",
+                    dataType: "json",
+                    data: data,
+                    headers: {
+                        Authorization: layui.data('layuiAdmin').Authorization
+                    },
+                    success: function (res) {
+
+                        layer.confirm('应缴纳的罚款为' + res.data.money, {
+                                btn: '缴纳罚款',
+                                title: '缴纳罚款'
+                            },
+                            function (index) {
+                                $.ajax({
+                                    url: "/api/record/pay",
+                                    type: "get",
+                                    dataType: "json",
+                                    data: res.data,
+
+                                    headers: {
+                                        Authorization: layui.data('layuiAdmin')
+                                            .Authorization
+                                    },
+                                    success: function (res) {
+                                        if (res.data.code == 201) {
+                                            layer.msg("缴纳成功", {
+                                                icon: 1,
+                                                time: 1000
+                                            });
+                                        } else {
+                                            layer.msg("缴纳失败", {
+                                                icon: 2,
+                                                time: 1000
+                                            });
+                                        }
+                                        table.reload('userRecordTable')
+                                    }
+                                })
+                                layer.close(index);
+                                var options = {
+                                    method: 'get',
+                                    where: data,
+                                    // contentType: 'application/json'
+                                }
+
+                            });
+
+                            
+
+                    }
+                })
+
+
+            }
+
+        });
+
+
+
+
+    })
+
+</script>

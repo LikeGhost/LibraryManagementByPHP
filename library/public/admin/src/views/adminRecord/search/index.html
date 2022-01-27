@@ -1,0 +1,240 @@
+<title>借阅记录管理</title>
+
+<div class="layui-card layadmin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb">
+        <a lay-href="">图书管理</a>
+        <a><cite>借阅记录管理</cite></a>
+        <a><cite>借阅记录管理</cite></a>
+    </div>
+</div>
+
+
+<div class="layui-fluid">
+    <div class="layui-card ">
+        <div class="layui-form layui-card-header layuiadmin-card-header-auto ">
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">班级</label>
+                <div class="layui-input-inline">
+                    <select name="grade" id="grade" lay-verify="required" lay-search lay-filter="grade">
+                        <option value="">请选择班级</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+        <div class="layui-card-body ">
+            <table id="adminRecordTable" lay-filter="adminRecordTable"></table>
+            <script type="text/html" id="adminRecordControl">
+                {{# if(d.status=='正在借阅'||d.status=='超期'){ }}
+                <a class="layui-btn layui-btn layui-btn-xs" lay-event="changeReturnTime">
+                    <i class="layui-icon layui-icon-time"></i>修改应还时间</a>
+                {{# }}}
+
+            </script>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script>
+    layui.use(['laydate', 'form', 'table', 'laytpl'], function () {
+        var $ = layui.$,
+            element = layui.element,
+            form = layui.form,
+            setter = layui.setter,
+            laydate = layui.laydate,
+            table = layui.table,
+            laytpl = layui.laytpl;
+
+
+
+
+        loadGrade()
+
+        function loadGrade() {
+            var grade;
+            $.ajax({
+                url: "/api/user/grade",
+                async: false,
+                type: "get",
+                dataType: "json",
+                headers: {
+                    Authorization: layui.data('layuiAdmin').Authorization
+                },
+                success: function (res) {
+                    var html = '<option value="">请选择班级</option>';
+                    res.data.forEach(e => {
+                        html += '<option value="' + e.id + '">' + e.grade +
+                            '</option>';
+                    });
+                    //console.log(html);
+                    $('#grade').html(html);
+                    form.render('select');
+
+                }
+            })
+            return grade
+        }
+
+
+        table.render({
+            id: 'adminRecordTable',
+            elem: '#adminRecordTable', //指定原始表格元素选择器（推荐id选择器）
+            // height: 315 //容器高度
+            //     ,
+            // limit: 10,
+            cols: [
+                [{
+                        field: 'record_id',
+                        title: 'ID',
+                    },
+                    {
+                        field: 'book_id',
+                        title: 'book_id',
+                        hide: 'true'
+                    },
+                    {
+                        field: 'isbn',
+                        title: 'ISBN'
+                    },
+                    {
+                        field: 'name',
+                        title: '书名'
+                    },
+                    {
+                        field: 'author',
+                        title: '作者',
+                        hide: true
+                    },
+                    {
+                        field: 'status',
+                        title: '是否可借',
+                        hide: true
+                    },
+                    {
+                        field: 'put_time',
+                        title: '上架时间',
+                        hide: true
+                    }, {
+                        field: 'borrow_at',
+                        title: '借出时间',
+                        sort: true
+                    },
+                    {
+                        field: 'return_at',
+                        title: '应还时间/归还时间',
+                        sort: true
+                    }, {
+                        field: 'status',
+                        title: '借阅状态',
+                        sort: true
+                    },
+                    {
+                        field: 'library_name',
+                        title: '存放图书馆',
+                        hide: 'true'
+                    },
+                    {
+                        fixed: 'right',
+                        title: '操作',
+                        toolbar: '#adminRecordControl',
+                        align: 'center',
+                    }
+                ]
+            ],
+            url: '/api/record/searchAll',
+            method: 'get',
+            where: {},
+            contentType: '',
+            headers: {
+                Authorization: layui.data('layuiAdmin').Authorization
+            },
+            title: '图书列表',
+            loading: true,
+            page: true,
+            limits: [10, 20, 30],
+            parseData: function (res) {
+                return {
+                    "code": res.code,
+                    "count": res.data.total,
+                    "data": res.data.data //解析数据列表
+                };
+            },
+            toolbar: 'default',
+            done: function () {
+
+                console.log('表格加载完毕')
+            },
+            skin: 'line'
+        });
+
+
+
+        table.on('tool(adminRecordTable)', function (obj) {
+            var data = obj.data,
+                layEvent = obj.event;
+
+
+            if (layEvent === 'changeReturnTime') {
+
+                layer.open({
+                    type: 2,
+                    area: ['450px',
+                        '450px'
+                    ], //admin.screen() < 2 ? ['100%', '80%'] : ['375px', '500px'],
+                    offset: 'auto',
+                    fixed: true,
+                    maxmin: true,
+                    btnAlign: 'c',
+                    title: '修改应还时间',
+                    // content: layui.setter.base + 'views/iframe/layer/iframe.html'
+                    content: layui.setter.base +
+                        'views/adminRecord/search/recordTime.html?record_id=' + data.record_id,
+                    success: function (layero, index) {
+
+                    }
+                });
+
+
+            }
+
+
+
+        });
+
+
+
+        form.on('select(grade)', function (data) {
+
+
+            if (data.value == '') {
+                var options = {
+                    url:'/api/record/searchAll',
+                    method: 'get',
+                    // contentType: 'application/json'
+                }
+                table.reload('adminRecordTable',options)
+            } else {
+
+
+                var options = {
+                    url:'/api/record/searchByGrade',
+                    method: 'get',
+                    where:{'grade':data.value},
+                    // contentType: 'application/json'
+                }
+
+                table.reload('adminRecordTable',options)
+            }
+
+        });
+
+
+    })
+
+</script>

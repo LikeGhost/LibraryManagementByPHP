@@ -1,0 +1,35 @@
+{
+    "code": 0,
+    "msg": "",
+    "data": [{
+        "title": "主页",
+        "icon": "layui-icon-home",
+
+        "jump": "/"
+    },{
+        "title":"图书管理",
+        "icon": "layui-icon-read    ",
+        "list":[{
+            "title":"添加图书",
+            "jump":"book/add/"
+        },{
+            "title":"查询图书",
+            "jump":"book/search/"
+        },{
+            "title":"管理图书库存",
+            "jump":"book/manage/"
+        }]
+    },{
+        "title":"用户管理",
+        "icon": "layui-icon-user",
+        "list":[{
+            "title":"查询用户",
+            "jump":"users/list/"
+        }]
+    },{
+        "title":"借阅记录管理",
+        "icon": "layui-icon-list",
+        "jump":"adminRecord/search/"
+
+    }]
+}
