@@ -11,7 +11,7 @@
  Target Server Version : 80012
  File Encoding         : 65001
 
- Date: 13/01/2022 06:01:15
+ Date: 28/01/2022 02:41:13
 */
 
 SET NAMES utf8mb4;
@@ -34,35 +34,36 @@ CREATE TABLE `book`  (
   `total` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 115 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of book
 -- ----------------------------
-INSERT INTO `book` VALUES (18, '9787208169944', 100, '我从哪里来', '[德] 萨沙·斯坦尼西奇', 4, '2022-01-10 00:00:00', 28.00, '山内的自杀引发媒体哗然，1991年，28岁的导演是枝裕和，因执导《可是……抛弃福祉的时代》纪录片拜访了山内的遗孀，借此走进这位官员53年的人生轨迹。过程中，是枝被山内丰德这个人物深深吸引。跟随着山内夫人的证言和山内留下的大量信件、诗歌、随笔、论文等，一个理想主义者的悲剧侧面渐渐浮现出来。', '2', NULL, '2022-01-10 11:40:39');
-INSERT INTO `book` VALUES (61, '9787533966102', 34, '生死疲劳', '莫言', 4, '2022-01-01 00:00:00', 69.90, '不看不知道，欲哭又想笑。活着不容易，幽默无价宝。——莫言\n\n五十年间西门闹经历六次转世，\n\n一世为驴，二世为牛，三世为猪，四世为狗，五世为猴，最终降生为人。\n\n在这六世里，他目睹蓝脸一家三代经历人生的生死疲劳，\n\n他们爱就爱到底，恨就恨到底，犟就犟到底，干就干到底，\n\n有极致的痛苦，也有彻底的放纵。', '4', NULL, '2022-01-10 14:35:37');
-INSERT INTO `book` VALUES (62, '9787532179374', 56, '重走', '杨潇', 3, '2022-01-12 00:00:00', 95.00, '青年作家杨潇以徒步为主，历时40余天，重走西南联大西迁路，在公路、河流和驿道上寻找联大往事，还原80年前一群年轻人“在路上”的故事，回到传奇的起点，看它如何在战乱中点滴成形。', '0', NULL, '2022-01-11 16:22:50');
-INSERT INTO `book` VALUES (63, '9787201172002', 24, '微尘', '陈年喜', 6, '2021-05-01 00:00:00', 58.00, '这本书收录了陈年喜21篇非虚构故事集。\n\n书中写了一群平凡而朴素的劳动者的故事。\n\n他们是爆破工、运石工、乡村木匠、农夫、农妇、小作坊老板……\n\n而作家自己的故事，贯穿始终：在地下五千米开山炸石，在烟尘和轰鸣中养家糊口，在工棚和山野中写下诗篇，记录命运的爆裂和寂静。\n\n他们虽历经生活的磨砺，却淳朴而硬扎，沉静地诉说关于亲情、爱情、死亡、欲望的生活主题……\n\n这是一本生命的书，也是死亡的书，归根到底，是一本生活的书。', '3', NULL, '2022-01-10 14:35:35');
-INSERT INTO `book` VALUES (64, '9787532179251', 53, '全球真实故事集', '吴琦', 5, '2021-12-08 00:00:00', 54.00, '这些故事来自洪都拉斯、波兰、刚果、塞内加尔、南非、古巴、英国、日本等12个国家和地区，涉及移民、养老、种族、性别等当下性、全球性的议题。由专业写作者深入现场调查，挖掘复杂事件的前因后果，呈现现实世界的光明与灰暗，直击全球社会的矛盾与不公——在真实故事里，世界是不平的。', '2', NULL, '2022-01-10 14:35:31');
-INSERT INTO `book` VALUES (65, '9787559827999', 64, '声誉', '唐诺', 4, '2022-01-12 00:00:00', 23.00, '人们在本雅明死后多年才一拥而来的那些赞誉和崇拜，要是能够分一点到他生前，本雅明就不必如此狼狈一生，也不用四十几岁就绝望自杀于法西边界的比利牛斯山区。当然，能救援他的不直接是声誉，而是声誉带来的可换得的东西：一些钱，或一本护照。诸如此类的故事还能想到许多，比方梵高，还有爱伦·坡。', '0', NULL, '2022-01-11 16:24:33');
-INSERT INTO `book` VALUES (66, '9787542673053', 25, '梁庄十年', '梁鸿', 3, '2022-01-10 00:00:00', 52.00, '从失去声音的农村女性到返乡的打工者\n\n梁鸿蕞新非虚构作品\n\n展现急速变化时代下中国村庄的变迁', '0', NULL, NULL);
-INSERT INTO `book` VALUES (67, '9787542669964', 74, '夜晚的潜水艇', '陈春成', 6, '2020-09-01 00:00:00', 52.00, '《夜晚的潜水艇》 是陈春成的首部小说集。九个故事，游走于旧山河与未知宇宙间，以瑰奇飘扬的想象、温厚清幽的笔法，在现实与幻境间辟开秘密的通道：海底漫游的少年、深山遗落的古碑、弥散入万物的字句、云彩修剪站、铸剑与酿酒、铁幕下的萨克斯、蓝鲸内的演奏厅…… 关于藏匿与寻找、追捕与逃遁，种种无常中的一点确凿，烈日与深渊间的一小片清凉。陈春成的小说世界，是可供藏身的洞窟，悬浮于纸上的宫殿，航向往昔的潜艇。', '4', NULL, '2022-01-10 14:35:28');
-INSERT INTO `book` VALUES (68, '9787559640666', 34, '秋园', '杨本芬', 5, '2020-06-01 00:00:00', 38.00, '听八旬奶奶讲述她和妈妈的故事。\n\n1914年，世上有了“秋园”这个人。1918年，汉语有了“她”这个字。秋园，她来过，挣扎过，绝望过，幸福过。今天，她80岁的女儿，把普普通通的她，讲给世界听。\n\n“我写了一位普通中国女性一生的故事，写了我们一家人如何像水中的浮木般挣扎求生，写了中南腹地那些乡间人物的生生死死。我知道自己写出的故事如同一滴水，最终将汇入人类历史的长河。”', '0', NULL, NULL);
-INSERT INTO `book` VALUES (69, '9787521714289', 23, '煤气灯效应', '[美] 罗宾·斯特恩', 4, '2020-01-01 00:00:00', 34.80, '你努力改变自己，希望成为好伴侣、好员工、好儿女，却始终无法获得肯定。也许这不是因为你还不够好，而是你无意识地被操控了……你对自己的看法往往来自周围人的评价？你是否总在向父母、伴侣和领导道歉？你的父母数落你的穿着、工作、朋友还有交往对象，你却反思也许他们的意见都是对的？你很难做出简单的决定，并且经常自我怀疑？如果你也符合以上的情形，小心！你很可能已经被“煤气灯操纵”了！', '0', NULL, NULL);
-INSERT INTO `book` VALUES (70, '9787569942514', 57, '工作', '[美] 埃伦·拉佩尔·谢尔', 5, '2021-01-01 00:00:00', 54.00, '在本书中，作者埃伦·拉佩尔·谢尔从历史、社会、经济、心理、教育等多个角度揭示现代“工作”困境的形成。她令人信服地表明，技术创新、全球竞争和体制改革等一系列力量，正在日益削弱许多人寻找展现个人价值的工作的能力；她同时认为，对制度创新的集体想象力和能力，最终将证明人们能够应对挑战，为工作创造出光明的未来。', '0', NULL, NULL);
-INSERT INTO `book` VALUES (71, '9787020162338', 86, '柔软的距离', '邓安庆', 6, '2021-04-01 00:00:00', 25.00, '本书是作家邓安庆的短篇随笔集。书中多描写社会底层的众多人物，从北漂族、打工仔、女工、个体小老板，到修路工、保安、讨债人……他们纷纷被裹挟进变革的洪流，在细碎的生活中品尝着悲喜人生。', '0', NULL, '2022-01-10 09:02:30');
-INSERT INTO `book` VALUES (72, '9787020042494', 100, '小王子', '[法国] 安东尼·德·圣-埃克苏佩里', 3, '2003-08-01 00:00:00', 22.00, '小王子是一个超凡脱俗的仙童，他住在一颗只比他大一丁点儿的小行星上。陪伴他的是一朵他非常喜爱的小玫瑰花。但玫瑰花的虚荣心伤害了小王子对她的感情。小王子告别小行星，开始了遨游太空的旅行。他先后访问了六个行星，各种见闻使他陷入忧伤，他感到大人们荒唐可笑、太不正常。只有在其中一个点灯人的星球上，小王子才找到一个可以作为朋友的人。但点灯人的天地又十分狭小，除了点灯人他自己，不能容下第二个人。在地理学家的指点下，孤单的小王子来到人类居住的地球。', '4', NULL, '2022-01-10 16:56:09');
-INSERT INTO `book` VALUES (73, '9787020002207', 34, '红楼梦', '  [清] 曹雪芹 著 - 高鹗 续', 4, '1996-12-01 00:00:00', 59.70, '《红楼梦》是一部百科全书式的长篇小说。以宝黛爱情悲剧为主线，以四大家族的荣辱兴衰为背景，描绘出18世纪中国封建社会的方方面面，以及封建专制下新兴资本主义民主思想的萌动。结构宏大、情节委婉、细节精致，人物形象栩栩如生，声口毕现，堪称中国古代小说中的经 典。', '0', NULL, NULL);
-INSERT INTO `book` VALUES (74, '9787506365437', 67, '活着', '余华', 5, '2012-08-01 00:00:00', 20.00, '《活着(新版)》讲述了农村人福贵悲惨的人生遭遇。福贵本是个阔少爷，可他嗜赌如命，终于赌光了家业，一贫如洗。他的父亲被他活活气死，母亲则在穷困中患了重病，福贵前去求药，却在途中被国民党抓去当壮丁。经过几番波折回到家里，才知道母亲早已去世，妻子家珍含辛茹苦地养大两个儿女。此后更加悲惨的命运一次又一次降临到福贵身上，他的妻子、儿女和孙子相继死去，最后只剩福贵和一头老牛相依为命，但老人依旧活着，仿佛比往日更加洒脱与坚强。', '0', NULL, '2022-01-10 16:57:14');
-INSERT INTO `book` VALUES (75, '9787544253994', 37, '百年孤独', '[哥伦比亚] 加西亚·马尔克斯', 6, '2011-06-01 00:00:00', 39.50, '《百年孤独》是魔幻现实主义文学的代表作，描写了布恩迪亚家族七代人的传奇故事，以及加勒比海沿岸小镇马孔多的百年兴衰，反映了拉丁美洲一个世纪以来风云变幻的历史。作品融入神话传说、民间故事、宗教典故等神秘因素，巧妙地糅合了现实与虚幻，展现出一个瑰丽的想象世界，成为20世纪最重要的经典文学巨著之一。1982年加西亚•马尔克斯获得诺贝尔文学奖，奠定世界级文学大师的地位，很大程度上乃是凭借《百年孤独》的巨大影响。', '0', NULL, '2022-01-10 16:57:01');
-INSERT INTO `book` VALUES (76, '9787530210291', 53, '1984', '[英] 乔治·奥威尔', 3, '2010-04-01 00:00:00', 28.00, '《1984》是一部杰出的政治寓言小说，也是一部幻想小说。作品刻画了人类在极权主义社会的生存状态，有若一个永不褪色的警示标签，警醒世人提防这种预想中的黑暗成为现实。历经几十年，其生命力益显强大，被誉为20世纪影响最为深远的文学经典之一。', '0', NULL, '2022-01-10 16:56:35');
-INSERT INTO `book` VALUES (77, '9787806570920', 27, '飘', '[美国] 玛格丽特·米切尔', 4, '2000-09-01 00:00:00', 40.00, '小说中的故事发生在1861年美国南北战争前夕。生活在南方的少女郝思嘉从小深受南方文化传统的熏陶，可在她的血液里却流淌着野性的叛逆因素。随着战火的蔓廷和生活环境的恶化，郝思嘉的叛逆个性越来越丰满，越鲜明，在一系列的的挫折中她改造了自我，改变了个人甚至整个家族的命运，成为时代时势造就的新女性的形象。', '0', NULL, '2022-01-10 16:55:17');
-INSERT INTO `book` VALUES (78, '9787229042066', 14, '三体全集', '刘慈欣', 5, '2012-01-01 00:00:00', 168.00, '三体三部曲 (《三体》《三体Ⅱ·黑暗森林》《三体Ⅲ·死神永生》) ，原名“地球往事三部曲”，是中国著名科幻作家刘慈欣的首个长篇系列，由科幻世界杂志社策划制作，重庆出版集团出版。小说讲述了文革期间一次偶然的星际通讯引发的三体世界对地球的入侵以及之后人类文明与三体文明三百多年的恩怨情仇。三体三部曲出版后十分畅销，并深受读者和主流媒体好评，被普遍认为是中国科幻文学的里程碑之作，为中国科幻确立了一个新高度。', '0', NULL, '2022-01-10 16:54:28');
-INSERT INTO `book` VALUES (79, '9787544242516', 78, '白夜行', '[日本] 东野圭吾', 6, '2008-09-01 00:00:00', 29.80, '“只希望能手牵手在太阳下散步”，这个象征故事内核的绝望念想，有如一个美丽的幌子，随着无数凌乱、压抑、悲凉的故事片段像纪录片一样一一还原：没有痴痴相思，没有海枯石烂，只剩下一个冰冷绝望的诡计，最后一丝温情也被完全抛弃，万千读者在一曲救赎罪恶的凄苦爱情中悲切动容……', '0', NULL, '2022-01-10 16:54:14');
-INSERT INTO `book` VALUES (80, '9787806398791', 54, '撒哈拉的故事', '三毛', 3, '2003-08-01 00:00:00', 15.80, '三毛作品中最脍炙人口的《撒哈拉的故事》，由12篇精彩动人的散文结合而成，其中《沙漠中的饭店》，是三毛适应荒凉单调的沙漠生活后，重新拾笔的第一篇文字，自此之后，三毛便写出一系列以沙漠为背景的故事，倾倒了全世界的中文读者', '0', NULL, '2022-01-10 16:49:58');
-INSERT INTO `book` VALUES (81, '9787559614636', 33, '房思琪的初恋乐园', '林奕含', 4, '2022-01-12 00:00:00', 43.00, '令人心碎却无能为力的真实故事。\n\n向死而生的文学绝唱 打动万千读者的年度华语小说。\n\n李银河 戴锦华 骆以军 张悦然 冯唐 詹宏志 蒋方舟 史航 等多位学者作家社会名人郑重推荐。\n\n痛苦的际遇是如此难以分享，好险这个世界还有文学。', '1', NULL, '2022-01-11 16:22:35');
-INSERT INTO `book` VALUES (82, '9787020049295', 25, '平凡的世界（全三部）', '路遥', 5, '2022-01-12 00:00:00', 65.00, '《平凡的世界》是一部现实主义小说，也是一部小说形式的家族史。作者浓缩了中国西北农村的历史变迁过程，在小说中全景式地表现了中国当代城乡的社会生活。在近十年的广阔背景下，通过复杂的矛盾纠葛，刻划社会各阶层众多普通人的形象。劳动与爱情，挫折与追求，痛苦与欢乐，日常生活与巨大社会冲突，纷繁地交织在一起，深刻地展示了普通人在大时代历史进程中所走过的艰难曲折的道路。', '0', NULL, '2022-01-11 16:24:42');
+INSERT INTO `book` VALUES (18, '9787208169944', 100, '我从哪里来', '[德] 萨沙·斯坦尼西奇', 4, '2022-01-10 00:00:00', 28.00, '山内的自杀引发媒体哗然，1991年，28岁的导演是枝裕和，因执导《可是……抛弃福祉的时代》纪录片拜访了山内的遗孀，借此走进这位官员53年的人生轨迹。过程中，是枝被山内丰德这个人物深深吸引。跟随着山内夫人的证言和山内留下的大量信件、诗歌、随笔、论文等，一个理想主义者的悲剧侧面渐渐浮现出来。', '2', NULL, '2022-01-10 11:40:39', NULL);
+INSERT INTO `book` VALUES (61, '9787533966102', 34, '生死疲劳', '莫言', 4, '2022-01-01 00:00:00', 69.90, '不看不知道，欲哭又想笑。活着不容易，幽默无价宝。——莫言\n\n五十年间西门闹经历六次转世，\n\n一世为驴，二世为牛，三世为猪，四世为狗，五世为猴，最终降生为人。\n\n在这六世里，他目睹蓝脸一家三代经历人生的生死疲劳，\n\n他们爱就爱到底，恨就恨到底，犟就犟到底，干就干到底，\n\n有极致的痛苦，也有彻底的放纵。', '4', NULL, '2022-01-10 14:35:37', NULL);
+INSERT INTO `book` VALUES (62, '9787532179374', 56, '重走', '杨潇', 3, '2022-01-12 00:00:00', 95.00, '青年作家杨潇以徒步为主，历时40余天，重走西南联大西迁路，在公路、河流和驿道上寻找联大往事，还原80年前一群年轻人“在路上”的故事，回到传奇的起点，看它如何在战乱中点滴成形。', '0', NULL, '2022-01-11 16:22:50', NULL);
+INSERT INTO `book` VALUES (63, '9787201172002', 24, '微尘', '陈年喜', 6, '2021-05-01 00:00:00', 58.00, '这本书收录了陈年喜21篇非虚构故事集。\n\n书中写了一群平凡而朴素的劳动者的故事。\n\n他们是爆破工、运石工、乡村木匠、农夫、农妇、小作坊老板……\n\n而作家自己的故事，贯穿始终：在地下五千米开山炸石，在烟尘和轰鸣中养家糊口，在工棚和山野中写下诗篇，记录命运的爆裂和寂静。\n\n他们虽历经生活的磨砺，却淳朴而硬扎，沉静地诉说关于亲情、爱情、死亡、欲望的生活主题……\n\n这是一本生命的书，也是死亡的书，归根到底，是一本生活的书。', '3', NULL, '2022-01-10 14:35:35', NULL);
+INSERT INTO `book` VALUES (64, '9787532179251', 53, '全球真实故事集', '吴琦', 5, '2021-12-08 00:00:00', 54.00, '这些故事来自洪都拉斯、波兰、刚果、塞内加尔、南非、古巴、英国、日本等12个国家和地区，涉及移民、养老、种族、性别等当下性、全球性的议题。由专业写作者深入现场调查，挖掘复杂事件的前因后果，呈现现实世界的光明与灰暗，直击全球社会的矛盾与不公——在真实故事里，世界是不平的。', '2', NULL, '2022-01-10 14:35:31', NULL);
+INSERT INTO `book` VALUES (65, '9787559827999', 64, '声誉', '唐诺', 4, '2022-01-12 00:00:00', 23.00, '人们在本雅明死后多年才一拥而来的那些赞誉和崇拜，要是能够分一点到他生前，本雅明就不必如此狼狈一生，也不用四十几岁就绝望自杀于法西边界的比利牛斯山区。当然，能救援他的不直接是声誉，而是声誉带来的可换得的东西：一些钱，或一本护照。诸如此类的故事还能想到许多，比方梵高，还有爱伦·坡。', '0', NULL, '2022-01-11 16:24:33', NULL);
+INSERT INTO `book` VALUES (66, '9787542673053', 25, '梁庄十年', '梁鸿', 3, '2022-01-10 00:00:00', 52.00, '从失去声音的农村女性到返乡的打工者\n\n梁鸿蕞新非虚构作品\n\n展现急速变化时代下中国村庄的变迁', '0', NULL, NULL, NULL);
+INSERT INTO `book` VALUES (67, '9787542669964', 74, '夜晚的潜水艇', '陈春成', 6, '2020-09-01 00:00:00', 52.00, '《夜晚的潜水艇》 是陈春成的首部小说集。九个故事，游走于旧山河与未知宇宙间，以瑰奇飘扬的想象、温厚清幽的笔法，在现实与幻境间辟开秘密的通道：海底漫游的少年、深山遗落的古碑、弥散入万物的字句、云彩修剪站、铸剑与酿酒、铁幕下的萨克斯、蓝鲸内的演奏厅…… 关于藏匿与寻找、追捕与逃遁，种种无常中的一点确凿，烈日与深渊间的一小片清凉。陈春成的小说世界，是可供藏身的洞窟，悬浮于纸上的宫殿，航向往昔的潜艇。', '4', NULL, '2022-01-10 14:35:28', NULL);
+INSERT INTO `book` VALUES (68, '9787559640666', 34, '秋园', '杨本芬', 5, '2020-06-01 00:00:00', 38.00, '听八旬奶奶讲述她和妈妈的故事。\n\n1914年，世上有了“秋园”这个人。1918年，汉语有了“她”这个字。秋园，她来过，挣扎过，绝望过，幸福过。今天，她80岁的女儿，把普普通通的她，讲给世界听。\n\n“我写了一位普通中国女性一生的故事，写了我们一家人如何像水中的浮木般挣扎求生，写了中南腹地那些乡间人物的生生死死。我知道自己写出的故事如同一滴水，最终将汇入人类历史的长河。”', '0', NULL, NULL, NULL);
+INSERT INTO `book` VALUES (69, '9787521714289', 23, '煤气灯效应', '[美] 罗宾·斯特恩', 4, '2020-01-01 00:00:00', 34.80, '你努力改变自己，希望成为好伴侣、好员工、好儿女，却始终无法获得肯定。也许这不是因为你还不够好，而是你无意识地被操控了……你对自己的看法往往来自周围人的评价？你是否总在向父母、伴侣和领导道歉？你的父母数落你的穿着、工作、朋友还有交往对象，你却反思也许他们的意见都是对的？你很难做出简单的决定，并且经常自我怀疑？如果你也符合以上的情形，小心！你很可能已经被“煤气灯操纵”了！', '0', NULL, NULL, NULL);
+INSERT INTO `book` VALUES (70, '9787569942514', 57, '工作', '[美] 埃伦·拉佩尔·谢尔', 5, '2021-01-01 00:00:00', 54.00, '在本书中，作者埃伦·拉佩尔·谢尔从历史、社会、经济、心理、教育等多个角度揭示现代“工作”困境的形成。她令人信服地表明，技术创新、全球竞争和体制改革等一系列力量，正在日益削弱许多人寻找展现个人价值的工作的能力；她同时认为，对制度创新的集体想象力和能力，最终将证明人们能够应对挑战，为工作创造出光明的未来。', '0', NULL, NULL, NULL);
+INSERT INTO `book` VALUES (71, '9787020162338', 86, '柔软的距离', '邓安庆', 6, '2021-04-01 00:00:00', 25.00, '本书是作家邓安庆的短篇随笔集。书中多描写社会底层的众多人物，从北漂族、打工仔、女工、个体小老板，到修路工、保安、讨债人……他们纷纷被裹挟进变革的洪流，在细碎的生活中品尝着悲喜人生。', '0', NULL, '2022-01-10 09:02:30', NULL);
+INSERT INTO `book` VALUES (72, '9787020042494', 100, '小王子', '[法国] 安东尼·德·圣-埃克苏佩里', 3, '2003-08-01 00:00:00', 22.00, '小王子是一个超凡脱俗的仙童，他住在一颗只比他大一丁点儿的小行星上。陪伴他的是一朵他非常喜爱的小玫瑰花。但玫瑰花的虚荣心伤害了小王子对她的感情。小王子告别小行星，开始了遨游太空的旅行。他先后访问了六个行星，各种见闻使他陷入忧伤，他感到大人们荒唐可笑、太不正常。只有在其中一个点灯人的星球上，小王子才找到一个可以作为朋友的人。但点灯人的天地又十分狭小，除了点灯人他自己，不能容下第二个人。在地理学家的指点下，孤单的小王子来到人类居住的地球。', '4', NULL, '2022-01-10 16:56:09', NULL);
+INSERT INTO `book` VALUES (73, '9787020002207', 34, '红楼梦', '  [清] 曹雪芹 著 - 高鹗 续', 4, '1996-12-01 00:00:00', 59.70, '《红楼梦》是一部百科全书式的长篇小说。以宝黛爱情悲剧为主线，以四大家族的荣辱兴衰为背景，描绘出18世纪中国封建社会的方方面面，以及封建专制下新兴资本主义民主思想的萌动。结构宏大、情节委婉、细节精致，人物形象栩栩如生，声口毕现，堪称中国古代小说中的经 典。', '0', NULL, NULL, NULL);
+INSERT INTO `book` VALUES (74, '9787506365437', 67, '活着', '余华', 5, '2012-08-01 00:00:00', 20.00, '《活着(新版)》讲述了农村人福贵悲惨的人生遭遇。福贵本是个阔少爷，可他嗜赌如命，终于赌光了家业，一贫如洗。他的父亲被他活活气死，母亲则在穷困中患了重病，福贵前去求药，却在途中被国民党抓去当壮丁。经过几番波折回到家里，才知道母亲早已去世，妻子家珍含辛茹苦地养大两个儿女。此后更加悲惨的命运一次又一次降临到福贵身上，他的妻子、儿女和孙子相继死去，最后只剩福贵和一头老牛相依为命，但老人依旧活着，仿佛比往日更加洒脱与坚强。', '0', NULL, '2022-01-10 16:57:14', NULL);
+INSERT INTO `book` VALUES (75, '9787544253994', 37, '百年孤独', '[哥伦比亚] 加西亚·马尔克斯', 6, '2011-06-01 00:00:00', 39.50, '《百年孤独》是魔幻现实主义文学的代表作，描写了布恩迪亚家族七代人的传奇故事，以及加勒比海沿岸小镇马孔多的百年兴衰，反映了拉丁美洲一个世纪以来风云变幻的历史。作品融入神话传说、民间故事、宗教典故等神秘因素，巧妙地糅合了现实与虚幻，展现出一个瑰丽的想象世界，成为20世纪最重要的经典文学巨著之一。1982年加西亚•马尔克斯获得诺贝尔文学奖，奠定世界级文学大师的地位，很大程度上乃是凭借《百年孤独》的巨大影响。', '0', NULL, '2022-01-10 16:57:01', NULL);
+INSERT INTO `book` VALUES (76, '9787530210291', 53, '1984', '[英] 乔治·奥威尔', 3, '2010-04-01 00:00:00', 28.00, '《1984》是一部杰出的政治寓言小说，也是一部幻想小说。作品刻画了人类在极权主义社会的生存状态，有若一个永不褪色的警示标签，警醒世人提防这种预想中的黑暗成为现实。历经几十年，其生命力益显强大，被誉为20世纪影响最为深远的文学经典之一。', '0', NULL, '2022-01-10 16:56:35', NULL);
+INSERT INTO `book` VALUES (77, '9787806570920', 27, '飘', '[美国] 玛格丽特·米切尔', 4, '2000-09-01 00:00:00', 40.00, '小说中的故事发生在1861年美国南北战争前夕。生活在南方的少女郝思嘉从小深受南方文化传统的熏陶，可在她的血液里却流淌着野性的叛逆因素。随着战火的蔓廷和生活环境的恶化，郝思嘉的叛逆个性越来越丰满，越鲜明，在一系列的的挫折中她改造了自我，改变了个人甚至整个家族的命运，成为时代时势造就的新女性的形象。', '0', NULL, '2022-01-10 16:55:17', NULL);
+INSERT INTO `book` VALUES (78, '9787229042066', 14, '三体全集', '刘慈欣', 5, '2012-01-01 00:00:00', 168.00, '三体三部曲 (《三体》《三体Ⅱ·黑暗森林》《三体Ⅲ·死神永生》) ，原名“地球往事三部曲”，是中国著名科幻作家刘慈欣的首个长篇系列，由科幻世界杂志社策划制作，重庆出版集团出版。小说讲述了文革期间一次偶然的星际通讯引发的三体世界对地球的入侵以及之后人类文明与三体文明三百多年的恩怨情仇。三体三部曲出版后十分畅销，并深受读者和主流媒体好评，被普遍认为是中国科幻文学的里程碑之作，为中国科幻确立了一个新高度。', '0', NULL, '2022-01-10 16:54:28', NULL);
+INSERT INTO `book` VALUES (79, '9787544242516', 78, '白夜行', '[日本] 东野圭吾', 6, '2008-09-01 00:00:00', 29.80, '“只希望能手牵手在太阳下散步”，这个象征故事内核的绝望念想，有如一个美丽的幌子，随着无数凌乱、压抑、悲凉的故事片段像纪录片一样一一还原：没有痴痴相思，没有海枯石烂，只剩下一个冰冷绝望的诡计，最后一丝温情也被完全抛弃，万千读者在一曲救赎罪恶的凄苦爱情中悲切动容……', '0', NULL, '2022-01-10 16:54:14', NULL);
+INSERT INTO `book` VALUES (80, '9787806398791', 54, '撒哈拉的故事', '三毛', 3, '2003-08-01 00:00:00', 15.80, '三毛作品中最脍炙人口的《撒哈拉的故事》，由12篇精彩动人的散文结合而成，其中《沙漠中的饭店》，是三毛适应荒凉单调的沙漠生活后，重新拾笔的第一篇文字，自此之后，三毛便写出一系列以沙漠为背景的故事，倾倒了全世界的中文读者', '0', NULL, '2022-01-10 16:49:58', NULL);
+INSERT INTO `book` VALUES (81, '9787559614636', 33, '房思琪的初恋乐园', '林奕含', 4, '2022-01-12 00:00:00', 43.00, '令人心碎却无能为力的真实故事。\n\n向死而生的文学绝唱 打动万千读者的年度华语小说。\n\n李银河 戴锦华 骆以军 张悦然 冯唐 詹宏志 蒋方舟 史航 等多位学者作家社会名人郑重推荐。\n\n痛苦的际遇是如此难以分享，好险这个世界还有文学。', '1', NULL, '2022-01-11 16:22:35', NULL);
+INSERT INTO `book` VALUES (82, '9787020049295', 25, '平凡的世界（全三部）', '路遥', 5, '2022-01-12 00:00:00', 65.00, '《平凡的世界》是一部现实主义小说，也是一部小说形式的家族史。作者浓缩了中国西北农村的历史变迁过程，在小说中全景式地表现了中国当代城乡的社会生活。在近十年的广阔背景下，通过复杂的矛盾纠葛，刻划社会各阶层众多普通人的形象。劳动与爱情，挫折与追求，痛苦与欢乐，日常生活与巨大社会冲突，纷繁地交织在一起，深刻地展示了普通人在大时代历史进程中所走过的艰难曲折的道路。', '0', NULL, '2022-01-11 16:24:42', NULL);
 
 -- ----------------------------
 -- Table structure for book_status
@@ -72,7 +73,7 @@ CREATE TABLE `book_status`  (
   `id` int(11) NOT NULL,
   `status` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of book_status
@@ -89,7 +90,7 @@ CREATE TABLE `clc`  (
   `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `sign` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 249 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of clc
@@ -357,7 +358,7 @@ CREATE TABLE `failed_jobs`  (
   `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `failed_jobs_uuid_unique`(`uuid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of failed_jobs
@@ -374,7 +375,7 @@ CREATE TABLE `fine`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of fine
@@ -390,7 +391,7 @@ CREATE TABLE `grade`  (
   `id` int(11) NOT NULL,
   `grade` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of grade
@@ -407,7 +408,7 @@ CREATE TABLE `library`  (
   `id` int(11) NOT NULL,
   `library_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of library
@@ -423,7 +424,7 @@ CREATE TABLE `migrations`  (
   `migration` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of migrations
@@ -442,7 +443,7 @@ CREATE TABLE `password_resets`  (
   `token` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   INDEX `password_resets_email_index`(`email`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of password_resets
@@ -456,7 +457,7 @@ CREATE TABLE `permission`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `permission` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of permission
@@ -481,7 +482,7 @@ CREATE TABLE `personal_access_tokens`  (
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `personal_access_tokens_token_unique`(`token`) USING BTREE,
   INDEX `personal_access_tokens_tokenable_type_tokenable_id_index`(`tokenable_type`, `tokenable_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of personal_access_tokens
@@ -496,7 +497,7 @@ CREATE TABLE `publish`  (
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   `area` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of publish
@@ -527,38 +528,38 @@ DROP TABLE IF EXISTS `real_book`;
 CREATE TABLE `real_book`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `book_id` int(11) NULL DEFAULT NULL,
-  `book_status_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
+  `book_status_id` int(11) NULL DEFAULT NULL,
   `put_time` datetime NULL DEFAULT NULL,
   `library_id` int(11) NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of real_book
 -- ----------------------------
-INSERT INTO `real_book` VALUES (1, 18, '1', '2022-01-10 11:32:43', 1, NULL, NULL);
-INSERT INTO `real_book` VALUES (2, 18, '1', '2022-01-10 11:40:01', 1, NULL, NULL);
-INSERT INTO `real_book` VALUES (6, 67, '1', '2022-01-10 14:35:28', 1, NULL, NULL);
-INSERT INTO `real_book` VALUES (7, 67, '1', '2022-01-10 14:35:28', 1, NULL, NULL);
-INSERT INTO `real_book` VALUES (8, 67, '1', '2022-01-10 14:35:28', 1, NULL, NULL);
-INSERT INTO `real_book` VALUES (9, 67, '1', '2022-01-10 14:35:28', 1, NULL, NULL);
-INSERT INTO `real_book` VALUES (10, 64, '1', '2022-01-10 14:35:31', 1, NULL, NULL);
-INSERT INTO `real_book` VALUES (11, 64, '1', '2022-01-10 14:35:31', 1, NULL, NULL);
-INSERT INTO `real_book` VALUES (12, 63, '1', '2022-01-10 14:35:35', 1, NULL, NULL);
-INSERT INTO `real_book` VALUES (13, 63, '1', '2022-01-10 14:35:35', 1, NULL, NULL);
-INSERT INTO `real_book` VALUES (14, 63, '1', '2022-01-10 14:35:35', 1, NULL, NULL);
-INSERT INTO `real_book` VALUES (15, 61, '1', '2022-01-10 14:35:37', 1, NULL, NULL);
-INSERT INTO `real_book` VALUES (16, 61, '1', '2022-01-10 14:35:37', 1, NULL, NULL);
-INSERT INTO `real_book` VALUES (17, 61, '1', '2022-01-10 14:35:37', 1, NULL, NULL);
-INSERT INTO `real_book` VALUES (18, 61, '2', '2022-01-10 14:35:37', 1, NULL, NULL);
-INSERT INTO `real_book` VALUES (19, 72, '1', '2022-01-10 14:35:42', 1, NULL, NULL);
-INSERT INTO `real_book` VALUES (20, 72, '1', '2022-01-10 14:35:42', 1, NULL, NULL);
-INSERT INTO `real_book` VALUES (21, 72, '1', '2022-01-10 14:35:42', 1, NULL, NULL);
-INSERT INTO `real_book` VALUES (22, 72, '1', '2022-01-10 14:35:42', 1, NULL, NULL);
-INSERT INTO `real_book` VALUES (23, 72, '1', '2022-01-10 14:35:42', 1, NULL, '2022-01-10 16:56:09');
-INSERT INTO `real_book` VALUES (24, 81, '1', '2022-01-10 15:59:09', 1, NULL, NULL);
+INSERT INTO `real_book` VALUES (1, 18, 1, '2022-01-10 11:32:43', 1, NULL, NULL);
+INSERT INTO `real_book` VALUES (2, 18, 1, '2022-01-10 11:40:01', 1, NULL, NULL);
+INSERT INTO `real_book` VALUES (6, 67, 1, '2022-01-10 14:35:28', 1, NULL, NULL);
+INSERT INTO `real_book` VALUES (7, 67, 1, '2022-01-10 14:35:28', 1, NULL, NULL);
+INSERT INTO `real_book` VALUES (8, 67, 1, '2022-01-10 14:35:28', 1, NULL, NULL);
+INSERT INTO `real_book` VALUES (9, 67, 1, '2022-01-10 14:35:28', 1, NULL, NULL);
+INSERT INTO `real_book` VALUES (10, 64, 1, '2022-01-10 14:35:31', 1, NULL, NULL);
+INSERT INTO `real_book` VALUES (11, 64, 1, '2022-01-10 14:35:31', 1, NULL, NULL);
+INSERT INTO `real_book` VALUES (12, 63, 1, '2022-01-10 14:35:35', 1, NULL, NULL);
+INSERT INTO `real_book` VALUES (13, 63, 1, '2022-01-10 14:35:35', 1, NULL, NULL);
+INSERT INTO `real_book` VALUES (14, 63, 1, '2022-01-10 14:35:35', 1, NULL, NULL);
+INSERT INTO `real_book` VALUES (15, 61, 1, '2022-01-10 14:35:37', 1, NULL, NULL);
+INSERT INTO `real_book` VALUES (16, 61, 1, '2022-01-10 14:35:37', 1, NULL, NULL);
+INSERT INTO `real_book` VALUES (17, 61, 1, '2022-01-10 14:35:37', 1, NULL, NULL);
+INSERT INTO `real_book` VALUES (18, 61, 2, '2022-01-10 14:35:37', 1, NULL, NULL);
+INSERT INTO `real_book` VALUES (19, 72, 1, '2022-01-10 14:35:42', 1, NULL, NULL);
+INSERT INTO `real_book` VALUES (20, 72, 1, '2022-01-10 14:35:42', 1, NULL, NULL);
+INSERT INTO `real_book` VALUES (21, 72, 1, '2022-01-10 14:35:42', 1, NULL, NULL);
+INSERT INTO `real_book` VALUES (22, 72, 1, '2022-01-10 14:35:42', 1, NULL, NULL);
+INSERT INTO `real_book` VALUES (23, 72, 1, '2022-01-10 14:35:42', 1, NULL, '2022-01-10 16:56:09');
+INSERT INTO `real_book` VALUES (24, 81, 1, '2022-01-10 15:59:09', 1, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for record
@@ -575,7 +576,7 @@ CREATE TABLE `record`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of record
@@ -596,7 +597,7 @@ CREATE TABLE `record_status`  (
   `id` int(11) NOT NULL,
   `status` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of record_status
@@ -613,7 +614,7 @@ CREATE TABLE `role`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `role` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of role
@@ -631,7 +632,7 @@ CREATE TABLE `role_permission`  (
   `role_id` int(11) NULL DEFAULT NULL,
   `permission_id` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of role_permission
@@ -649,7 +650,7 @@ CREATE TABLE `role_user`  (
   `role_id` int(11) NULL DEFAULT NULL,
   `user_id` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of role_user
@@ -673,7 +674,7 @@ CREATE TABLE `student`  (
   `updated_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of student
@@ -690,7 +691,7 @@ CREATE TABLE `student_title`  (
   `id` int(11) NOT NULL,
   `student_title` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of student_title
@@ -713,7 +714,7 @@ CREATE TABLE `teacher`  (
   `updated_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of teacher
@@ -729,7 +730,7 @@ CREATE TABLE `teacher_title`  (
   `id` int(11) NOT NULL,
   `teacher_title` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of teacher_title
@@ -743,7 +744,7 @@ INSERT INTO `teacher_title` VALUES (3, '教授');
 -- ----------------------------
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users`  (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
@@ -754,7 +755,7 @@ CREATE TABLE `users`  (
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `users_email_unique`(`email`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of users
